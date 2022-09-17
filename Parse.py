@@ -22,11 +22,11 @@ class Email:
         guest_count_var = re.search(guest_count_pattern, source)
 
         #Find Link
-        link_pattern = r"https://boombox.events/h/manage/tinyb/events/([\w.-]+)/([\w-]+) "
+        link_pattern = r"https://a.boompop.com/h/manage/tinyb/events/([\w.-]+)/([\w-]+) "
         link_var = re.search(link_pattern, source)
 
         #Find Event Type
-        event_pattern = r"\*Booking Summary\*\s(.+)\s(([Jj]une)|([jJ]uly)|([aA]ugust)|([sS]eptember)|([oO]ctober)|([nN]ovember)|([dD]ecember)|([jJ]anuary)|([fF]ebruary)|([mM]arch)|([aA]pril)|([mM]ay))"
+        event_pattern = r"\*Request Summary\*(\s+\n+)(.+)(\s+\n+)(([Jj]une)|([jJ]uly)|([aA]ugust)|([sS]eptember)|([oO]ctober)|([nN]ovember)|([dD]ecember)|([jJ]anuary)|([fF]ebruary)|([mM]arch)|([aA]pril)|([mM]ay))"
         event_var = re.search(event_pattern, source)
 
         #Find Company Name
@@ -35,7 +35,7 @@ class Email:
 
         output = { 
             'id': id_var.group(2),
-            'Event Type': event_var.group(1),
+            'Event Type': event_var.group(2),
             'Event Date': date_var.group(),
             'Event Time': time_var.group(),
             'Company Name': company_name_var.group(4),
