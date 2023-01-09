@@ -6,7 +6,7 @@ class Email:
     @staticmethod
     def ParseEmail(source):
         #Find ID
-        id_pattern = r'(Event-ID: ([A-Z0-9]+))'
+        id_pattern = r'(Event ID: ([A-Z0-9]+))'
         id_var = re.search(id_pattern, source)
 
         #Find Date
